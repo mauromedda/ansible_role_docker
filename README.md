@@ -33,6 +33,18 @@ The list of user that have to use the docker engine.
 
 None.
 
+## Example
+
+$ cat > site.yml <<-EOF
+
+- hosts: docker-servers
+  become: true
+  roles:
+    - { role: mauromedda.ansible_role_docker, docker_repo_config.section: docker-ce-edge }
+EOF
+
+$ ansible-playbook -i inventory site.yml
+
 ## License
 
 BSD
