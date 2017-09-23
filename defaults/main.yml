@@ -14,7 +14,7 @@ docker_packages_purge:
 
 docker_repo_config:
   baseurl: "https://download.docker.com/linux/centos/docker-ce.repo"
-  state: present
-  enabled: yes
+  section: docker-ce-stable
+  enabled: 1
 
 docker_enabled_users: [ ]

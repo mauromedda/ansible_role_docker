@@ -1,22 +1,24 @@
 ---
 # installation tasks for docker-ce
 
+- name: Docker-CE | Download the repo file
+  get_url:
+    url: "{{ docker_repo_config.baseurl }}"
+    dest: /etc/yum.repos.d/docker-ce.repo
+  tags:
+    - install
+    - docker
+    - repo
+
 - name: Docker-CE | Add repository
-  yum_repository:
-    name: docker-ce
-    description: Docker-CE Repository
-    gpgcheck: no
-    baseurl: "{{ docker_repo_config.baseurl }}"
-    state: "{{ docker_repo_config.state }}"
-    enabled: "{{ docker_repo_config.enabled }}"
+  ini_file:
+    dest: /etc/yum.repos.d/docker-ce.repo
+    section: "{{ docker_repo_config.section }}"
+    option: "{{ docker_repo_config.enabled }}"
   tags:
     - install
     - docker
-- name: Docker-CE | Update the yum cache
-  yum: update_cache=yes
-  tags:
-    - install
-    - docker
+    - repo
 
 - name: Docker-CE | Add users to Docker Group
   user:

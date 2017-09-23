@@ -20,8 +20,8 @@ The set of packages to purge. Basically, the oldest docker packages included on 
 
     docker_repo_config
        baseurl: "https://download.docker.com/linux/centos/docker-ce.repo"
-       state: present
-       enabled: yes
+       section: docker-ce-stable
+       enabled: 1
 
 The configuration for the Docker Community Edition package repository.
 
