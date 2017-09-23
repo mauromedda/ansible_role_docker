@@ -24,7 +24,7 @@
   user:
     name: "{{ item }}"
     groups: docker
-  with_items: "{{ docker_enabled_users | default(ansible_user) }}"
+  with_items: "{{ docker_enabled_users | default(ansible_user_id) }}"
   tags:
     - install
     - docker
