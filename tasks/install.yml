@@ -40,7 +40,7 @@
 
 - name: Docker-CE | Enable docker service and start
   systemd:
-    name: dockerd
+    name: docker
     state: started
     enabled: yes
   tags:
