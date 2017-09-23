@@ -12,6 +12,11 @@
   tags:
     - install
     - docker
+- name: Docker-CE | Update the yum cache
+  yum: update_cache=yes
+  tags:
+    - install
+    - docker
 
 - name: Docker-CE | Add users to Docker Group
   user:
