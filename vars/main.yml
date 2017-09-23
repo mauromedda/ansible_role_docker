@@ -1,0 +1,6 @@
+---
+#########################################
+# Role constraint and sensible defaults #
+#########################################
+
+docker_target: "CentOS"

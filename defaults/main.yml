@@ -1,0 +1,20 @@
+---
+# defaults file for ansible_role_docker
+
+docker_packages_required:
+  - yum-utils
+  - device-mapper-persistent-data
+  - lvm2
+
+docker_packages_purge:
+  - docker
+  - docker-common
+  - docker-selinux
+  - docker-engine
+
+docker_repo_config:
+  baseurl: "https://download.docker.com/linux/centos/docker-ce.repo"
+  state: present
+  enabled: yes
+
+docker_enabled_users: [ ]

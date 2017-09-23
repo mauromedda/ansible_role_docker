@@ -1,0 +1,42 @@
+---
+# installation tasks for docker-ce
+
+- name: Docker-CE | Add repository
+  yum_repository:
+    name: docker-ce
+    description: Docker-CE Repository
+    gpgcheck: no
+    baseurl: "{{ docker_repo_config.baseurl }}"
+    state: "{{ docker_repo_config.state }}"
+    enabled: "{{ docker_repo_config.enabled }}"
+  tags:
+    - install
+    - docker
+
+- name: Docker-CE | Add users to Docker Group
+  user:
+    name: {{ item }}
+    groups: docker
+  with_items:
+    - {{ docker_enabled_users | default(ansible_user} }}
+  tags:
+    - install
+    - docker
+    - add_users
+    
+- name: Docker-CE | Install Docker Community Edition
+  package:
+    name: docker-ce
+    state: present
+  tags:
+    - install
+    - docker
+
+- name: Docker-CE | Enable docker service and start
+  systemd:
+    name: dockerd
+    state: started
+    enabled: yes
+  tags:
+    - start
+    - docker

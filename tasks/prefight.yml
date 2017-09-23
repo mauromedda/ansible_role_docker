@@ -1,0 +1,8 @@
+---
+- name: Preflight - Fail if host is not suitable for this role
+  fail:
+    msg: "This role is not suitable for the destination operating system"
+  when: (ansible_distribution is not defined) or
+        (ansible_distribution_version is not defined) or
+        (ansible_distribution != cis_target_os_distribution)
+  tags: always
