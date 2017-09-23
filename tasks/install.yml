@@ -15,8 +15,6 @@
     dest: /etc/yum.repos.d/docker-ce.repo
     section: "{{ docker_repo_config.section }}"
     option: "{{ docker_repo_config.enabled }}"
-  notify:
-    - makecache
   tags:
     - install
     - docker
