@@ -3,4 +3,4 @@
 # Role constraint and sensible defaults #
 #########################################
 
-docker_target: "CentOS"
+docker_target_os_distribution: "CentOS"
